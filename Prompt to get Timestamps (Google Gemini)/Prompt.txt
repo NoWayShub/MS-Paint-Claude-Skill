@@ -1,0 +1,30 @@
+Analyze the uploaded voice-over audio carefully and generate a verbatim transcript with precise timestamps.
+TRANSCRIPTION RULES:
+1. Transcribe every spoken word exactly as heard. Do not summarize, paraphrase, correct grammar, or rewrite anything.
+2. Start the first timestamp at 00:00.
+3. Add a new timestamp approximately every 4–5 seconds throughout the entire audio.
+4. Each timestamp must indicate the actual moment the first word of that segment begins, based on the audio, not an estimated equal division.
+5. Preserve the original language, wording, repetitions, fillers, and sentence structure.
+6. Mark genuinely unintelligible speech as [unclear]. Never guess missing words.
+7. Use MM timestamp format, or HH:MM for audio longer than one hour.
+8. Keep segments chronological and approximately 4–5 seconds apart while respecting natural speech boundaries.
+9. Verify the complete transcript against the audio before finalizing.
+MANDATORY FILE OUTPUT:
+- Create a downloadable plain-text file named voiceover_transcript.txt.
+- Write the entire timestamped transcript inside this .txt file.
+- Use UTF-8 encoding.
+- Format each segment on a separate line, for example:
+[00:00] First spoken segment goes here.
+[00:05] Second spoken segment goes here.
+[00:09] Third spoken segment goes here.
+[00:14] Fourth spoken segment goes here.
+These timestamps are examples of formatting only. Use actual timestamps measured from the uploaded audio.
+IMPORTANT:
+- Do NOT paste the transcript into the chat response.
+- Do NOT return the transcript as a code block, Markdown document, or table.
+- Do NOT provide a summary or preview of the transcript.
+- Generate and attach the actual .txt file in the conversation so I can download it.
+- Your final chat response must contain only a download link to voiceover_transcript.txt, once the file has been successfully created.
+If you cannot create or attach a downloadable file, clearly state that limitation instead of pretending the file exists.
+
+(Upload the Audio)

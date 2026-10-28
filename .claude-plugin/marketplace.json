@@ -1,0 +1,12 @@
+{
+  "name": "mspaint-skills",
+  "description": "Claude skills for faceless MS Paint-style YouTube slideshow videos",
+  "owner": { "name": "NoWayShub" },
+  "plugins": [
+    {
+      "name": "mspaint-video-prompts",
+      "source": "./plugin",
+      "description": "Script + timestamp-based image prompts for MS Paint-style slideshow videos"
+    }
+  ]
+}

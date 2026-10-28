@@ -1,0 +1,6 @@
+{
+  "name": "mspaint-video-prompts",
+  "version": "1.0.0",
+  "description": "Turn a topic or script into MS Paint-style slideshow video image prompts (script, timestamps, per-image camera/scene/position prompts as a .txt file).",
+  "author": { "name": "NoWayShub" }
+}
