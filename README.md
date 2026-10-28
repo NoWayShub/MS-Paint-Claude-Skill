@@ -17,6 +17,7 @@ Claude writes the narrator script, you record the voiceover, you send back times
 - **Keeps the look consistent** across 40-60+ images with a fixed master style block and fixed character descriptions repeated word for word.
 - **Delivers full-length prompts** in a plain `.txt` file, written in batches of about 10 so nothing gets shortened.
 
+
 ## Example Images
 
 These examples demonstrate the visual style this skill aims to produce.
