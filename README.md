@@ -17,13 +17,19 @@ Claude writes the narrator script, you record the voiceover, you send back times
 - **Keeps the look consistent** across 40-60+ images with a fixed master style block and fixed character descriptions repeated word for word.
 - **Delivers full-length prompts** in a plain `.txt` file, written in batches of about 10 so nothing gets shortened.
 
+
 ## Example Images
 
-<p align="center">
-  <img src="plugin/skills/mspaint-video-prompts/references/dinosaur.png" width="32%" alt="Cartoon dinosaur">
-  <img src="plugin/skills/mspaint-video-prompts/references/footprints.png" width="32%" alt="Landscape with footprints">
-  <img src="plugin/skills/mspaint-video-prompts/references/flowers.png" width="32%" alt="Hand-drawn flowers">
-</p>
+These examples demonstrate the visual style this skill aims to produce.
+
+### Cartoon Character
+![Cartoon dinosaur reference](references/dinosaur.png)
+
+### Landscape and Footprints
+![Landscape reference](references/footprints.png)
+
+### Colorful Hand-Drawn Flowers
+![Flower illustration reference](references/flowers.png)
 
 ## The workflow
 
