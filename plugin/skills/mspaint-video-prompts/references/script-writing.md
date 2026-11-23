@@ -8,7 +8,7 @@ Use this when Claude writes the script, or when checking a script the user suppl
 3. Writing for a voiceover (ElevenLabs and similar)
 4. Language notes (Hindi, Hinglish, English)
 5. Accuracy
-6. Output format
+6. Output format (one clean, unnumbered version)
 
 ## 1. Length and pacing
 
@@ -30,18 +30,18 @@ These are estimates. Speaking speed depends on the voice and settings, and Hindi
 
 ## 3. Writing for a voiceover
 
-- **One idea per line**, and lines that are short enough to be spoken in about 3-8 seconds. Each line should be drawable as a single image.
-- Short, plain sentences. Avoid stacked clauses, brackets, and long lists inside one sentence.
+- **Write natural, continuous paragraphs**, the way a person would actually say it out loud. Do not split the script into one idea per line, and do not number anything. Scene splitting happens later, in Step 4 of SKILL.md, from the user's timestamps, not in the script.
+- Short, plain sentences, each easy to say in one breath. Avoid stacked clauses, brackets, and long lists inside one sentence.
 - Write numbers the way they should be spoken ("sixty-six million years ago" in English narration), since voice tools can misread digits and abbreviations.
 - Avoid hard-to-pronounce names without help. If a name is tricky (a long dinosaur name), tell the user and offer a phonetic spelling to paste into the voice tool.
 - Use punctuation to control pauses: commas for a short pause, full stops for a longer one, an ellipsis for a dramatic beat. Use sparingly.
-- Don't write stage directions or visual notes inside the narration text, because the user will paste it straight into the voice tool. Keep the script clean, and put anything else outside it.
+- Don't write stage directions, visual notes, labels ("Hook:", "Outro:"), numbers, bullets or markdown inside the narration text, because the user will paste it straight into the voice tool. Keep the script clean, and put anything else outside it.
 
 ## 4. Language notes
 
 - **English**: simple, conversational, no jargon without a one-line explanation.
 - **Hindi**: write in Devanagari by default, because voice tools generally pronounce Hindi better from Devanagari than from Roman letters. Suggest the user test a short sample first, and switch if the result sounds off.
-- **Hinglish**: ask whether the user wants Roman script or a Devanagari/English mix, since voice tools handle mixed scripts differently. Keep English terms in English when they're the natural word (for example "fossil").
+- **Hinglish**: write in Roman script, which is what the setup question offers. Don't ask the script question again. Use a Devanagari/English mix only if the user explicitly asks for it, since voice tools handle mixed scripts differently. Keep English terms in English when they're the natural word (for example "fossil").
 - Whatever the language, keep the tone of a friendly storyteller, not a textbook.
 - Image prompts are always in English, whatever the narration language is.
 
@@ -52,14 +52,17 @@ These are estimates. Speaking speed depends on the voice and settings, and Hindi
 - Don't invent statistics, quotes or sources to make a line sound stronger.
 - If the user's own script contains something that looks wrong, point it out politely and let them decide.
 
-## 6. Output format
+## 6. Output format (one clean, unnumbered version)
 
-Present the script as numbered lines, so it's easy to refer to them later:
+Present the narration exactly once, as natural, voiceover-ready paragraphs inside a single plain code block, with nothing but the spoken words in it:
 
-```
-1. <line>
-2. <line>
-...
-```
+- no numbered lines, bullets, scene numbers or timestamps
+- no headings, labels, production notes or stage directions
+- no bold, italics, dividers or other markdown decoration
+- natural punctuation and paragraph breaks only
 
-Then also give the same script as clean continuous text in a code block, ready to paste into the voice tool with no numbers. After it, tell the user to send back the timestamps once the audio is ready.
+Don't show a second, numbered copy. Anything else (approximate word count, a note about an uncertain fact, a phonetic spelling for a hard name) goes outside the code block.
+
+If the user supplied the script, don't reprint it renumbered, split or reformatted; keep it exactly as given and put any suggested fixes outside it.
+
+After the narration, tell the user to generate the voiceover and send back timestamps once the audio is ready. Timestamps are matched to the spoken text, so they don't need line numbers.

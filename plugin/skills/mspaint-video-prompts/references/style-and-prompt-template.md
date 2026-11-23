@@ -74,7 +74,7 @@ Aim for about 150-250 words per prompt. Detail is welcome as long as the key thi
 
 ## 5. Worked example
 
-Line (0:12 - 0:17): "An octopus has three hearts, and its blood is blue."
+Narration excerpt (0:12 - 0:17): "An octopus has three hearts, and its blood is blue."
 
 ```
 Flat 2D cartoon illustration in a crude hand-drawn MS Paint style. Thick, slightly wobbly black outlines, solid flat colors with no gradients, no shading, no texture, no realistic lighting. Simple shapes, minimal background. 16:9 widescreen.
@@ -89,7 +89,7 @@ POSITION: The octopus sits in the center-right of the frame, taking up about 55%
 
 DOODLES: Three small white hand-drawn stars and two short white sparkle lines above the strawberry. No other decorations.
 
-NO text, no letters, no watermark, no realistic style, no 3D look, no gradients.
+NO text, no letters, no numbers, no watermark, no realistic style, no 3D look, no gradients, no shadows.
 ```
 
 This prompt was tested by a user in Google Flow and gave the intended flat MS Paint look.
@@ -99,7 +99,7 @@ This prompt was tested by a user in Google Flow and gave the intended flat MS Pa
 - **Position in percentages and directions** ("center-right, about 55% of the width, facing left") works better than vague words ("nicely placed").
 - **One clear subject per image.** Crowded frames break the flat simple look and make characters drift.
 - **Leave deliberate empty space.** The editor will slowly zoom or pan on each image, and space also lets the user add text overlays later.
-- **Concrete over abstract.** For abstract lines ("this took millions of years"), design a visual metaphor: a long row of tiny calendars, a very tall stack of rocks, a clock with many hands.
+- **Concrete over abstract.** For abstract narration ("this took millions of years"), design a visual metaphor: a long row of tiny calendars, a very tall stack of rocks, a clock with many hands.
 - **Scale and comparison images**: show the two things side by side in the same frame, with the size difference stated in the position line ("the human is about one-tenth of the dinosaur's height").
 - **Maps, charts, timelines**: avoid. They need text, which the generator can't render. Replace with a visual that conveys the same idea without labels.
 - **Accuracy**: draw only what is true to the script. If the script says a dinosaur ate ferns, put ferns in the scene, and don't add features the animal didn't have.

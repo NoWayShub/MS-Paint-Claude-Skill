@@ -2,7 +2,7 @@
 
 A Claude skill that turns a topic (or your own script) into a complete set of image prompts for **faceless YouTube slideshow videos** in a flat, crude, **MS Paint-style cartoon look**: thick wobbly outlines, solid colors, one simple image every few seconds, with a voiceover on top.
 
-Claude writes the narrator script, you record the voiceover, you send back timestamps, and Claude designs **every image** (camera angle, scene, character positions, doodles) and delivers copy-paste prompts in a `.txt` file for Google Flow, Midjourney, DALL-E or any other image generator.
+Claude writes the narration (or uses yours), you record the voiceover, you send back timestamps, and Claude designs **every image** (camera angle, scene, character positions, doodles) and delivers copy-paste prompts in a `.txt` file for Google Flow, Midjourney, DALL-E or any other image generator.
 
 > **Important:** Claude does not generate images. This skill produces the *prompts*. You paste them into an image tool of your choice.
 
@@ -10,9 +10,9 @@ Claude writes the narrator script, you record the voiceover, you send back times
 
 ## What it does
 
-- **Asks you first with a poll** (tappable options), so you don't have to type answers: script source, narration language, video length.
-- **Writes the script** from your topic, or uses yours as-is if you already have one.
-- **Maps your timestamps to images.** Short lines get short images, long lines can be split into two.
+- **Asks the setup questions first**: script source, narration language and video length. If your Claude app has a native tappable poll tool, it uses it; otherwise it sends one plain-text multiple-choice message (see [How the setup questions work](#how-the-setup-questions-work)). It never starts the script until the questions are answered.
+- **Writes the narration** from your topic as natural, unnumbered, voiceover-ready paragraphs, or uses your own script exactly as written if you already have one.
+- **Maps your timestamps to images.** Claude splits the narration into scenes at natural sentence or clause boundaries, using exact excerpts of the narration. Short stretches get short images; long stretches can be split into two.
 - **Designs each image deliberately**: camera angle (with a stated reason), scene design, position of every subject in the frame, and small hand-drawn doodles.
 - **Keeps the look consistent** across 40-60+ images with a fixed master style block and fixed character descriptions repeated word for word.
 - **Delivers full-length prompts** in a plain `.txt` file, written in batches of about 10 so nothing gets shortened.
@@ -28,24 +28,41 @@ Claude writes the narrator script, you record the voiceover, you send back times
 ## The workflow
 
 ```text
-Topic  ->  Script  ->  Voiceover (e.g. ElevenLabs)  ->  Timestamps
+Topic  ->  Setup questions  ->  Narration  ->  Voiceover (e.g. ElevenLabs)  ->  Timestamps
                                                             |
 Final video  <-  Edit (CapCut / DaVinci / Canva)  <-  Images  <-  Image prompts (.txt)
 ```
 
 | Step | Who does it | What happens |
 |---|---|---|
-| 1. Poll | Claude | Asks script source, language and video length |
-| 2. Script | Claude (or you) | One idea per line, written for voiceover |
+| 1. Setup questions | Claude | Asks script source, language and video length (poll or plain text), then waits |
+| 2. Narration | Claude (or you) | Natural unnumbered paragraphs, written for voiceover; your own script is kept as is |
 | 3. Voiceover | You | Generate audio with a voice tool |
-| 4. Timestamps | You | Send `0:00 - 0:04  line text` style timings |
-| 5. Image plan | Claude | One image per line or group of lines |
+| 4. Timestamps | You | Send time ranges with the opening words of each stretch of narration |
+| 5. Scene plan | Claude | Splits the narration into scenes using exact excerpts; roughly one image per 5 seconds |
 | 6. Prompts | Claude | Full prompt per image, delivered as `.txt` |
 | 7. Generate and edit | You | Make images, add voiceover and motion in your editor |
 
+## How the setup questions work
+
+Before any script is written, Claude needs three things: **script source** (write from a topic / you have a script / polish a rough idea), **narration language** (Hindi / Hinglish in Roman script / English / other) and **video length** (about 2-3 min / 5 min / 8-10 min). It also needs a **topic**, unless you paste a finished script.
+
+- **Only what you actually said is skipped.** Claude doesn't guess defaults. A pasted script settles script source, language and length. Saying "you choose" for an item counts as an answer.
+- **With a native poll tool** (a tappable multiple-choice tool, when your Claude app provides one): Claude asks all missing multiple-choice items in a single poll, asks for the topic in a short message if it is missing, then stops and waits.
+- **Without a poll tool**: Claude sends one plain-text message listing only the unanswered items with lettered options, for example:
+
+  ```text
+  1. Script source?  a) Write it from my topic  b) I already have a script  c) I have a rough idea, polish it
+  2. Narration language?  a) Hindi  b) Hinglish (Roman script)  c) English  d) Other
+  3. Video length?  a) about 2-3 min  b) about 5 min  c) about 8-10 min
+  ```
+
+  You can reply like `1a, 2c, 3b` plus the topic. Claude then stops and waits.
+- Each question is asked once. If you answer only some, Claude asks only the rest.
+
 ## Example prompt
 
-For the narration line *"An octopus has three hearts, and its blue blood..."*, the skill produces a prompt like this:
+For the narration excerpt *"An octopus has three hearts, and its blood is blue."*, the skill produces a prompt like this:
 
 ```text
 Flat 2D cartoon illustration in a crude hand-drawn MS Paint style. Thick, slightly wobbly black outlines, solid flat colors with no gradients, no shading, no texture, no realistic lighting. Simple shapes, minimal background. 16:9 widescreen.
@@ -60,10 +77,10 @@ POSITION: The octopus sits in the center-right of the frame, taking up about 55%
 
 DOODLES: Three small white hand-drawn stars and two short white sparkle lines above the strawberry. No other decorations.
 
-NO text, no letters, no watermark, no realistic style, no 3D look, no gradients.
+NO text, no letters, no numbers, no watermark, no realistic style, no 3D look, no gradients, no shadows.
 ```
 
-Each entry in the output file also carries the timestamp, the narrator line, and a short note on why that camera angle was chosen, kept outside the copy area so pasting stays clean.
+Each entry in the output file also carries the timestamp, the exact narration excerpt, and a short note on why that camera angle was chosen, kept outside the copy area so pasting stays clean.
 
 ## Installation
 
@@ -130,18 +147,18 @@ If a command fails, check the marketplace name, plugin name and repository manif
 
 The exact menu labels and available features can vary by application version, account plan and organization settings. If the marketplace option is unavailable, use the CLI installation method above.
 
-### Option 3: Install the packaged skill manually
+### Option 3: Install the packaged skill manually (ZIP)
 
 Use this option if you want to install the skill without installing the entire plugin marketplace.
 
-1. Open this repository on GitHub.
-2. Download the `mspaint-video-prompts.skill` file.
+1. Open this repository on GitHub (or the release page, if one is published).
+2. Download `mspaint-video-prompts.zip`. Do not unzip it.
 3. Open Claude and go to its skill customization or skills settings.
-4. Use the available upload/import option to upload the `.skill` file.
+4. Use the available upload/import option to upload the ZIP file.
 5. Save or enable the skill if prompted.
 6. Start a new chat and describe your video idea.
 
-Manual skill upload is separate from plugin installation. The exact upload process depends on the Claude product you are using and the features available to your account.
+The ZIP contains a single `mspaint-video-prompts/` folder with `SKILL.md` and a `references/` folder. Manual skill upload is separate from plugin installation, and the exact upload process depends on the Claude product you are using and the features available to your account.
 
 ### Which installation method should I use?
 
@@ -149,7 +166,7 @@ Manual skill upload is separate from plugin installation. The exact upload proce
 |---|---|
 | Claude Code CLI | Developers who want repeatable terminal commands |
 | Claude Code Desktop | Users who prefer a graphical interface |
-| Manual `.skill` upload | Users who only need the packaged skill |
+| Manual ZIP upload | Users who only need the packaged skill |
 
 ## Usage
 
@@ -159,12 +176,14 @@ Start a new chat or Claude Code session and say what you want in your own words,
 
 > Mere paas script hai, uske liye image prompts chahiye.
 
-Claude will open a poll, then guide you through the steps above. When your voiceover is ready, send the timestamps:
+Claude will first ask the setup questions (see above), then guide you through the steps. When your voiceover is ready, send the timestamps. Narration has no line numbers, so timestamps are tied to the spoken text: a time range plus the opening words of that stretch.
 
 ```text
-0:00 - 0:04  Line text
-0:04 - 0:09  Line text
+0:00 - 0:04  Opening words of that stretch of narration
+0:04 - 0:09  Opening words of the next stretch
 ```
+
+Any reasonable format works, including a `[00:05] spoken text` transcript like the one the Gemini prompt in this repository produces.
 
 If you only know the total audio length, Claude can estimate timings from the word count, but it will tell you plainly that these are estimates. Real timestamps give a better match between voice and image.
 
@@ -187,10 +206,20 @@ If you only know the total audio length, Claude can estimate timings from the wo
 │               ├── style-and-prompt-template.md
 │               ├── camera-guide.md
 │               └── script-writing.md
-├── mspaint-video-prompts.skill
+├── Prompt to get Timestamps (Google Gemini)/
+│   └── Prompt.txt
+├── mspaint-video-prompts.zip
 ├── README.md
 └── LICENSE
 ```
+
+## What's new in v1.1
+
+- Setup questions are mandatory before scripting, work with or without a native poll tool, and never re-ask what you already answered.
+- Narration is natural, unnumbered paragraphs with no headings, labels or scene numbers; a script you supply is preserved exactly.
+- Timestamps map to narration excerpts, and scene splitting happens only after you send timestamps.
+- Reference files no longer contradict the above, and the worked example uses the exact negative block.
+- The packaged ZIP uses standard forward-slash paths.
 
 ## Languages
 
@@ -206,7 +235,7 @@ For Hindi narration, the skill writes in Devanagari by default, since voice tool
 - **No readable text inside images.** Image models misspell text, so add titles and labels in your video editor.
 - **Long prompts are not always followed fully.** Some generators weigh the start of a prompt more than the end. The skill puts style, subject, position and camera first for this reason.
 - **Facts need your eyes too.** Claude tries to verify claims when search is available and marks uncertain ones as such, but you should check anything you plan to publish.
-- **Tested lightly so far.** It has been tried on a small number of topics, including a dinosaur-diet video, and the octopus prompt above was confirmed to generate the intended look in Google Flow. Wider testing across other generators and topics hasn't been done, so results may vary.
+- **Tested lightly so far.** The v1.1 changes (setup questions, unnumbered narration, excerpt-based scene mapping) were checked by static review only and have not yet been run end to end in live Claude sessions. Version 1.0 has been tried on a small number of topics, including a dinosaur-diet video, and the octopus prompt above was confirmed to generate the intended look in Google Flow. Wider testing across other generators and topics hasn't been done, so results may vary.
 
 ## Contributing
 

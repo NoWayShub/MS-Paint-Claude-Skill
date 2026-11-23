@@ -1,11 +1,11 @@
 # Camera and composition guide
 
-Use this when deciding the CAMERA and POSITION lines for each image. The goal is a shot that makes the *line being spoken* more interesting and easier to understand, and a sequence that doesn't feel repetitive.
+Use this when deciding the CAMERA and POSITION lines for each image. The goal is a shot that makes the *narration being spoken* more interesting and easier to understand, and a sequence that doesn't feel repetitive.
 
 ## Contents
 1. Shot sizes
 2. Camera angles
-3. Matching the shot to the line
+3. Matching the shot to the narration
 4. Sequence rules
 5. Composition tips for flat-style images
 
@@ -32,7 +32,7 @@ Use this when deciding the CAMERA and POSITION lines for each image. The goal is
 | Over-the-shoulder / behind | Viewer shares the character's view | Approaching something, discovering something |
 | Slightly tilted ("dutch") | Tension, chaos | Sudden danger, an escape, something going wrong |
 
-## 3. Matching the shot to the line
+## 3. Matching the shot to the narration
 
 Ask: *What should the viewer feel or notice in these few seconds?*
 
@@ -45,7 +45,7 @@ Ask: *What should the viewer feel or notice in these few seconds?*
 - **A list or pattern** -> bird's-eye with items evenly spaced.
 - **An emotional beat or punchline** -> close-up on the face/reaction, with a "!" or sparkle doodle.
 
-If a line is abstract, convert it into something drawable first (see the template reference), then choose the shot.
+If the narration is abstract, convert it into something drawable first (see the template reference), then choose the shot.
 
 ## 4. Sequence rules
 

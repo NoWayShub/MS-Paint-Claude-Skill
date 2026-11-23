@@ -6,7 +6,7 @@ TRANSCRIPTION RULES:
 4. Each timestamp must indicate the actual moment the first word of that segment begins, based on the audio, not an estimated equal division.
 5. Preserve the original language, wording, repetitions, fillers, and sentence structure.
 6. Mark genuinely unintelligible speech as [unclear]. Never guess missing words.
-7. Use MM timestamp format, or HH:MM for audio longer than one hour.
+7. Use MM:SS timestamp format, or HH:MM:SS for audio longer than one hour.
 8. Keep segments chronological and approximately 4–5 seconds apart while respecting natural speech boundaries.
 9. Verify the complete transcript against the audio before finalizing.
 MANDATORY FILE OUTPUT:
